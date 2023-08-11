@@ -153,9 +153,10 @@ public class Articulos {
         }
     }
     public void Baja(int CodigoArt){
-        String Borrar = "delete from articulos where CodArticulo = '"+ CodigoArt +"'";
+        String Borrar = "delete from articulos where CodArticulo = ?";
         try {
             Ps = con.conectar().prepareStatement(Borrar);
+            Ps.setInt(1, CodigoArt);
             int ejecutar = Ps.executeUpdate();
             if (ejecutar > 0) {
                 JOptionPane.showMessageDialog(null, "PRODUCTO ELIMINADO");
@@ -178,12 +179,15 @@ public class Articulos {
             JOptionPane.showMessageDialog(null, "Error");
         }
     }
-    public void BuscarPorCod(int Cod){
-        String buscar = "select art.CodArticulo, art.TipoDeArticulo, art.Nombre, art.Anio, art.Descripcion, art.CantPaginas, art.CantCanciones, art.Duracion, art.CantCopias, a.Nombre from articulos as art inner join autor as a on art.Autor_idAutor = a.idAutor where CodArticulo = '"+ Cod +"';";
+    public boolean BuscarPorCod(int Cod){
+        boolean resp = false;
+        String buscar = "select art.CodArticulo, art.TipoDeArticulo, art.Nombre, art.Anio, art.Descripcion, art.CantPaginas, art.CantCanciones, art.Duracion, art.CantCopias, a.Nombre from articulos as art inner join autor as a on art.Autor_idAutor = a.idAutor where CodArticulo = ?";
         try {
             Ps = con.conectar().prepareStatement(buscar);
+            Ps.setInt(1, Cod);
             Rs = Ps.executeQuery();
             if (Rs.next()) {
+                resp = true;
                 this.setCodArt(Rs.getInt(1));
                 this.setTipoDeArt(Rs.getInt(2));
                 this.setNombre(Rs.getString(3));
@@ -194,10 +198,13 @@ public class Articulos {
                 this.setDuracion(Rs.getTime(8));
                 this.setCantCopias(Rs.getInt(9));
                 this.setNomAutor(Rs.getString(10));
+            }else{
+                JOptionPane.showMessageDialog(null, "No se encontró el código ingresado");
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error, no se encontro el Articulo" + "\n" + e);
+            JOptionPane.showMessageDialog(null, "Error!!" + "\n" + e);
         }
+        return resp;
     }
     
     public DefaultTableModel MostrarTitulos(){

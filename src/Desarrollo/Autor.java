@@ -4,7 +4,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 public class Autor {
@@ -78,34 +77,6 @@ public class Autor {
             JOptionPane.showMessageDialog(null, "Error!!, el registro no pudo ser modificado" + e);
         }
     }
- /*   public DefaultListModel Mostrar(){
-        DefaultListModel mostrarLista = new DefaultListModel();
-        String mostrar = "select Nombre from autor order by Nombre"; //traigo de mysql esta consulta y la almaceno en una variable
-        try {
-            Ps = con.conectar().prepareStatement(mostrar);
-            Rs = Ps.executeQuery(); //ejecuto el objeto Rs 
-            while (Rs.next()) {// y hago un bucle para recorrer la lista
-                mostrarLista.addElement(Rs.getString(1));//el dato cargado necesito que me lo muestre en la lista de la columna (1)
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error en la muestra de los nombres de autores" + e);
-        }
-        return mostrarLista;
-    }   */
-    public DefaultComboBoxModel LlenarCombo(){
-        DefaultComboBoxModel conten = new DefaultComboBoxModel();
-        String muestro = "select Nombre from autor order by Nombre";
-        try {
-            Ps = con.conectar().prepareStatement(muestro);
-            Rs = Ps.executeQuery();
-            while (Rs.next()) {
-                conten.addElement(Rs.getString(1));
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "no puede mostrar los autores" + "\n" + e);
-        }
-        return conten;
-    }
     public void Baja(int autorAEliminar){
         String Borrar = "DELETE FROM autor WHERE idAutor = ?"; //Almaceno el DELETE del worbench en una variable
         try {
@@ -157,5 +128,19 @@ public class Autor {
             JOptionPane.showMessageDialog(null, "Error en la consulta de Socio" + "\n" + e);
         }
         return contenido;
+    }
+    public DefaultComboBoxModel LlenarCombo(){
+        DefaultComboBoxModel conten = new DefaultComboBoxModel();
+        String muestro = "select Nombre, idAutor from autor order by Nombre";
+        try {
+            Ps = con.conectar().prepareStatement(muestro);
+            Rs = Ps.executeQuery();
+            while (Rs.next()) {
+                conten.addElement(Rs.getString(1) + ", Id: " + Rs.getInt(2));
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "no puede mostrar los autores" + "\n" + e);
+        }
+        return conten;
     }
 }

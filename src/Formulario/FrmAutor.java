@@ -12,8 +12,6 @@ int idAutorEle = 0;
         this.CbPais.setModel(this.CargaComboBoxPais()); //lleno el combo pais
         this.PanelBuscar.setVisible(false);
         this.setTitle("CATALOGO DE AUTORES");
-        //a = new Autor();
-        //this.LstNomAutores.setModel(a.Mostrar());//aqui llamo a mi lista y selecciono el metodo
         this.BtnEliminar.setEnabled(false);
         this.BtnModificar.setEnabled(false);
     }
@@ -63,8 +61,6 @@ int idAutorEle = 0;
         BtnCancelar = new org.edisoncor.gui.button.ButtonAction();
         PanelTabla = new javax.swing.JScrollPane();
         Tabla = new javax.swing.JTable();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        LstNomAutores = new javax.swing.JList<>();
 
         setBackground(new java.awt.Color(0, 54, 204));
         setClosable(true);
@@ -207,24 +203,6 @@ int idAutorEle = 0;
 
         PanelCarga.add(PanelBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 40, 330, 180));
 
-        LstNomAutores.setForeground(new java.awt.Color(0, 0, 0));
-        LstNomAutores.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                LstNomAutoresMouseClicked(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                LstNomAutoresMousePressed(evt);
-            }
-        });
-        LstNomAutores.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
-            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                LstNomAutoresValueChanged(evt);
-            }
-        });
-        jScrollPane2.setViewportView(LstNomAutores);
-
-        PanelCarga.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, 159, 142));
-
         PanelBackGround.add(PanelCarga, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -263,7 +241,6 @@ int idAutorEle = 0;
         this.CbPais.setEnabled(false);
         this.CbTipoDeAutor.setEnabled(false);
         a = new Autor();
-//        this.LstNomAutores.setModel(a.Mostrar());
         this.Tabla.setModel(a.MostrarTitulos());
         this.Tabla.setModel(a.MostrarContenido());
     }//GEN-LAST:event_BtnMostrarActionPerformed
@@ -342,30 +319,12 @@ int idAutorEle = 0;
         this.BtnModificar.setEnabled(false);
     }//GEN-LAST:event_BtnAceptarActionPerformed
 
-    private void LstNomAutoresValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_LstNomAutoresValueChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_LstNomAutoresValueChanged
-
-    private void LstNomAutoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LstNomAutoresMouseClicked
-        String contenido = this.LstNomAutores.getSelectedValue();
-        this.TxtNom.setText(contenido);
-        this.BtnEliminar.setEnabled(true);
-        this.BtnModificar.setEnabled(true);
-    }//GEN-LAST:event_LstNomAutoresMouseClicked
-
-    private void LstNomAutoresMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LstNomAutoresMousePressed
-        String contenido = this.LstNomAutores.getSelectedValue();
-        this.TxtNom.setText(contenido);
-        this.BtnEliminar.setEnabled(true);
-        this.BtnModificar.setEnabled(true);
-    }//GEN-LAST:event_LstNomAutoresMousePressed
-
     private void TablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaMouseClicked
-      /*  int colu = 0;
+        int colu = 0;
         int fila = this.Tabla.getSelectedRow();
         int BuscarxId = Integer.parseInt(this.Tabla.getValueAt(fila, colu).toString());
         System.out.println("mouse click " + BuscarxId);
-        RetornarValores(BuscarxId); */
+        RetornarValores(BuscarxId);
     }//GEN-LAST:event_TablaMouseClicked
 
     private void TablaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaMousePressed
@@ -518,7 +477,6 @@ int idAutorEle = 0;
     private org.edisoncor.gui.label.LabelRound LblNom;
     private org.edisoncor.gui.label.LabelRound LblPais;
     private org.edisoncor.gui.label.LabelRound LblTipoDeAutor;
-    private javax.swing.JList<String> LstNomAutores;
     private javax.swing.JPanel PanelBackGround;
     private javax.swing.JPanel PanelBotones;
     private org.edisoncor.gui.panel.PanelShadow PanelBuscar;
@@ -526,6 +484,5 @@ int idAutorEle = 0;
     private javax.swing.JScrollPane PanelTabla;
     private javax.swing.JTable Tabla;
     private org.edisoncor.gui.textField.TextFieldRound TxtNom;
-    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }

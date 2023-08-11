@@ -16,7 +16,6 @@ private char Boton;
         this.CbTipoDeArticulo.setModel(this.CargaCb());
         this.CbAutor.setModel(a.LlenarCombo());
         this.PanelElimModi.setVisible(false);
-        
         this.PanelConfirAnular.setVisible(false);
     }
     private DefaultComboBoxModel CargaCb(){
@@ -75,6 +74,7 @@ private char Boton;
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         PanelCarga.setBackground(new java.awt.Color(0, 54, 204));
 
@@ -151,6 +151,7 @@ private char Boton;
         TxAreaDescripcion.setForeground(new java.awt.Color(255, 255, 255));
         TxAreaDescripcion.setRows(5);
         TxAreaDescripcion.setCaretColor(new java.awt.Color(255, 255, 255));
+        TxAreaDescripcion.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(TxAreaDescripcion);
 
         CbTipoDeArticulo.setBackground(new java.awt.Color(0, 0, 135));
@@ -273,6 +274,8 @@ private char Boton;
                 .addGap(23, 23, 23))
         );
 
+        getContentPane().add(PanelCarga, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
+
         PanelBotones.setBackground(new java.awt.Color(0, 54, 204));
         PanelBotones.setLayout(new java.awt.GridLayout(1, 0));
 
@@ -312,6 +315,8 @@ private char Boton;
         });
         PanelBotones.add(BtnSalir);
 
+        getContentPane().add(PanelBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 474, -1, -1));
+
         PanelElimModi.setBackground(new java.awt.Color(0, 54, 204));
         PanelElimModi.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Buscar por:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Schoolbook", 3, 14), new java.awt.Color(255, 255, 255))); // NOI18N
         PanelElimModi.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -339,6 +344,7 @@ private char Boton;
         PanelElimModi.add(RbNom, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 66, 83, -1));
 
         TxtCodEliModi.setBackground(new java.awt.Color(0, 54, 204));
+        TxtCodEliModi.setForeground(new java.awt.Color(255, 255, 255));
         TxtCodEliModi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 TxtCodEliModiKeyTyped(evt);
@@ -390,6 +396,8 @@ private char Boton;
         });
         PanelElimModi.add(BtnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(196, 64, -1, 32));
 
+        getContentPane().add(PanelElimModi, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 10, 330, 320));
+
         PanelConfirAnular.setBackground(new java.awt.Color(0, 54, 204));
         PanelConfirAnular.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -413,36 +421,7 @@ private char Boton;
         });
         PanelConfirAnular.add(BtnAnular, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 6, 76, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PanelCarga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PanelBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PanelElimModi, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PanelConfirAnular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(PanelElimModi, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(PanelConfirAnular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(PanelCarga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(PanelBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(13, Short.MAX_VALUE))
-        );
+        getContentPane().add(PanelConfirAnular, new org.netbeans.lib.awtextra.AbsoluteConstraints(465, 344, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -498,17 +477,24 @@ private char Boton;
     private void BtnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEliminarActionPerformed
         HabilitarPanelBuscar();
         Boton = 'E';
+        this.BtnCarga.setEnabled(false);
+        this.BtnModificar.setEnabled(false);
     }//GEN-LAST:event_BtnEliminarActionPerformed
 
     private void BtnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnModificarActionPerformed
         HabilitarPanelBuscar();
         Boton = 'M';
+        this.BtnCarga.setEnabled(false);
+        this.BtnEliminar.setEnabled(false);
     }//GEN-LAST:event_BtnModificarActionPerformed
 
     private void RbCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RbCodigoActionPerformed
+        this.TxtCodEliModi.setText(null);
         this.PanelTabla.setVisible(false);
         this.TxtCodEliModi.setVisible(true);
         this.TxtCodEliModi.requestFocus();
+        this.BtnAceptar.setVisible(true);
+        this.BtnCancelar.setVisible(true);
     }//GEN-LAST:event_RbCodigoActionPerformed
 
     private void RbNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RbNomActionPerformed
@@ -517,29 +503,47 @@ private char Boton;
         this.Tabla.setModel(art.TitulosElimModif());
         this.Tabla.setModel(art.MostrarContenidoElimModif());
         this.TxtCodEliModi.setVisible(false);
+        this.BtnAceptar.setVisible(false);
+        this.BtnCancelar.setVisible(false);
     }//GEN-LAST:event_RbNomActionPerformed
 
     private void BtnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAceptarActionPerformed
         switch (Boton) {
             case 'E':
                 try {
-                    int confirmar = JOptionPane.showConfirmDialog(null, "Esta seguro que desea eliminar el código: " + this.TxtCodEliModi.getText());
-                    if (confirmar == 0) {
-                        int CodigoAEliminar = Integer.parseInt(this.TxtCodEliModi.getText());
-                        art = new Articulos();
-                        art.Baja(CodigoAEliminar);
+                    if (this.TxtCodEliModi.getText().isEmpty()) {
+                        JOptionPane.showMessageDialog(null, "Campo vacío, ingresar código del Articulo a eliminar");
+                    } else {
+                        int confirmar = JOptionPane.showConfirmDialog(null, "Esta seguro que desea eliminar el código: " + this.TxtCodEliModi.getText());
+                        if (confirmar == 0) {
+                            int CodigoAEliminar = Integer.parseInt(this.TxtCodEliModi.getText());
+                            art = new Articulos();
+                            art.Baja(CodigoAEliminar);
+                            DeshabilitarPanelBuscar();
+                            this.BtnCarga.setEnabled(true);
+                            this.BtnModificar.setEnabled(true);
+                        }
                     }
                     this.TxtCodEliModi.setText(null);
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Error al cancelar");
+                    JOptionPane.showMessageDialog(null, "Error " + e);
                 }                
                 break;
             case 'M':
                 DeshabilitarPanelBuscar();
-                BuscaryEnviarALasCajas();
-                this.PanelConfirAnular.setVisible(true);
+                if (this.TxtCodEliModi.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Campo vacío, ingresar el código a buscar");
+                    this.BtnCarga.setEnabled(true);
+                    this.BtnEliminar.setEnabled(true);
+                } else {
+                    boolean existe = BuscaryEnviarALasCajas();
+                    if (existe == true) {
+                        this.PanelConfirAnular.setVisible(true);
+                    }
+                }
                 break;
         }
+        //this.PanelElimModi.setVisible(false);
     }//GEN-LAST:event_BtnAceptarActionPerformed
 
     private void TxtCodEliModiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtCodEliModiKeyTyped
@@ -554,17 +558,24 @@ private char Boton;
         int col = 3;
         int fila = this.Tabla.getSelectedRow();
         this.TxtCodEliModi.setText(this.Tabla.getValueAt(fila, col).toString());
+        this.BtnAceptar.setVisible(true);
+        this.BtnCancelar.setVisible(true);
     }//GEN-LAST:event_TablaMouseClicked
 
     private void BtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnConfirmarActionPerformed
         AltaModif();
         this.PanelConfirAnular.setVisible(false);
+        this.BtnCarga.setEnabled(true);
+        this.BtnEliminar.setEnabled(true);
     }//GEN-LAST:event_BtnConfirmarActionPerformed
 
     private void BtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCancelarActionPerformed
         this.RbCodigo.setSelected(false);
         this.RbNom.setSelected(false);
-        this.PanelElimModi.setVisible(false);
+        this.BtnCarga.setEnabled(true);
+        this.BtnModificar.setEnabled(true);
+        this.BtnEliminar.setEnabled(true);
+        DeshabilitarPanelBuscar();
     }//GEN-LAST:event_BtnCancelarActionPerformed
 
     private void TablaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaMousePressed
@@ -580,6 +591,9 @@ private char Boton;
     private void BtnAnularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAnularActionPerformed
         this.PanelElimModi.setVisible(false);
         this.PanelConfirAnular.setVisible(false);
+        this.BtnCarga.setEnabled(true);
+        this.BtnEliminar.setEnabled(true);
+        Limpiar();
     }//GEN-LAST:event_BtnAnularActionPerformed
 
     private int SwCombo(){
@@ -621,8 +635,8 @@ private char Boton;
         this.TxAreaDescripcion.setText(null);
         this.TxtCantPag.setText(null);
         this.TxtCantCancio.setText(null);
-        //this.TxtDuracionHora.setText(null);
-        //this.TxtDuracionMinutos.setText(null);
+        this.SpHora.setValue(0);
+        this.SpMinutos.setValue(0);
         this.TxtCantCopias.setText(null);
         this.CbAutor.setSelectedIndex(0);
     }
@@ -645,11 +659,13 @@ private char Boton;
         this.SpMinutos.setEnabled(false);
         this.TxtCantCopias.setEnabled(false);
         this.CbAutor.setEnabled(false);
+        this.BtnAceptar.setVisible(false);
+        this.BtnCancelar.setVisible(false);
     }
     private void DeshabilitarPanelBuscar(){
-        this.PanelElimModi.setVisible(true);
-        this.TxtCodEliModi.setVisible(false);
-        this.PanelTabla.setVisible(false);
+        this.PanelElimModi.setVisible(false);
+        //this.TxtCodEliModi.setVisible(false);
+        //this.PanelTabla.setVisible(false);
         this.TxtCodArticulo.setEnabled(true);
         this.CbTipoDeArticulo.setEnabled(true);
         this.TxtNom.setEnabled(true);
@@ -700,8 +716,7 @@ private char Boton;
             }
             int CantCop = Integer.parseInt(this.TxtCantCopias.getText());
             String AutorForm = this.CbAutor.getSelectedItem().toString();
-            int AutorSql = a.RetornarIdAutor(AutorForm);
-                         //int CodArt, int TipoDeArt, String Nombre, Date Anio, String Descripcion, int CantPag, int CantCancio, Time Duracion, int CantCopias, int idAutor
+            int AutorSql = Integer.parseInt(AutorForm.replaceAll("[^0-9]", ""));
             art = new Articulos(CodArt, TipoArt, Nom, anioSql, Desc, CantPag, CantCancio, Duracion, CantCop, AutorSql);
             if (Boton == 'M') {
                 art.Modificar();
@@ -712,29 +727,36 @@ private char Boton;
         }
         Limpiar();
     }
-    private void BuscaryEnviarALasCajas(){
+    private boolean BuscaryEnviarALasCajas(){
         art = new Articulos();
-        art.BuscarPorCod(Integer.parseInt(this.TxtCodEliModi.getText()));
-        java.util.Date Fecha =  art.getAnio();
-        this.TxtCodArticulo.setText(String.valueOf(art.getCodArt()));
-        String tpArt = SwComboRetornar(art.getTipoDeArt());
-        this.CbTipoDeArticulo.setSelectedItem(tpArt);
-        this.TxtNom.setText(art.getNombre());
-        this.FechaCalendario.setDate(Fecha);
-        this.TxAreaDescripcion.setText(art.getDescripcion());
-        this.TxtCantPag.setText(String.valueOf(art.getCantPag()));
-        this.TxtCantCancio.setText(String.valueOf(art.getCantCancio()));
-        int h, m;
-        java.time.LocalTime hora = art.getDuracion().toLocalTime();//sql 11:25:32:00 ==> 11:25:32:00 pero pueedo sacar hh, mm, ss por separados
-        h = hora.getHour();//me separa la hora
-        m = hora.getMinute();// me  separa los minutos
-        //this.SpMinutos.setValue(hora.getMinute(); //otra forma
-        this.SpHora.setValue(h);
-        this.SpMinutos.setValue(m);
-        this.TxtCantCopias.setText(String.valueOf(art.getCantCopias()));
-        this.CbAutor.setSelectedItem(art.getNomAutor());
-       // java.time.LocalTime Hora = new LocalTime();
-      //  this.SpHora.setValue(art.getDuracion());
+        boolean existe = art.BuscarPorCod(Integer.parseInt(this.TxtCodEliModi.getText()));
+        if (existe == true) {
+            java.util.Date Fecha =  art.getAnio();
+            this.TxtCodArticulo.setText(String.valueOf(art.getCodArt()));
+            String tpArt = SwComboRetornar(art.getTipoDeArt());
+            this.CbTipoDeArticulo.setSelectedItem(tpArt);
+            this.TxtNom.setText(art.getNombre());
+            this.FechaCalendario.setDate(Fecha);
+            this.TxAreaDescripcion.setText(art.getDescripcion());
+            this.TxtCantPag.setText(String.valueOf(art.getCantPag()));
+            this.TxtCantCancio.setText(String.valueOf(art.getCantCancio()));
+            int h, m;
+            java.time.LocalTime hora = art.getDuracion().toLocalTime();//sql 11:25:32:00 ==> 11:25:32:00 pero pueedo sacar hh, mm, ss por separados
+            h = hora.getHour();//me separa la hora
+            m = hora.getMinute();// me  separa los minutos
+            //this.SpMinutos.setValue(hora.getMinute(); //otra forma
+            this.SpHora.setValue(h);
+            this.SpMinutos.setValue(m);
+            this.TxtCantCopias.setText(String.valueOf(art.getCantCopias()));
+            this.CbAutor.setSelectedItem(art.getNomAutor());
+           // java.time.LocalTime Hora = new LocalTime();
+          //  this.SpHora.setValue(art.getDuracion());
+        } else {
+            this.BtnCarga.setEnabled(true);
+            this.BtnEliminar.setEnabled(true);
+            JOptionPane.showMessageDialog(null, "Ocultar o visualizar");
+        }
+        return existe;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAceptar;

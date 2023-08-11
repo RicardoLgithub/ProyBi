@@ -69,8 +69,6 @@ public class Socio {
         this.Tel = Tel;
     }
     
-    
-    
     public void Alta(){
         String carga = "INSERT INTO socio(Nombre,PrimerApellido,Dni,Direccion,Telefono)VALUES(?,?,?,?,?);";
         try {
