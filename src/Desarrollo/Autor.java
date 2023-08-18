@@ -11,10 +11,10 @@ public class Autor {
     private int Pais;
     private int TipoDeAutor;
     
-    private final Conexion con = new Conexion(); //La estoy usando de forma global
-    private PreparedStatement Ps; //La estoy usando de forma global
-    ResultSet Rs; //hago un import a la clase ResultSet, la llamo y creo un obj 'Rs'
-    DefaultTableModel contenido;
+    private final Conexion con = new Conexion();
+    private PreparedStatement Ps;
+    private ResultSet Rs;
+    private DefaultTableModel contenido;
     
     public Autor(String Nom, int Pais, int TipoDeAutor) {
         this.Nom = Nom;
@@ -51,16 +51,18 @@ public class Autor {
     public void Alta(){
         String carga = "INSERT INTO autor(Nombre,Pais,TipoDeAutor)VALUES(?,?,?)";
         try {
-            Ps = con.conectar().prepareStatement(carga);//conecto a la Bdd e inserto los valores
+            Ps = con.conectar().prepareStatement(carga);
             Ps.setString(1, this.Nom);
             Ps.setInt(2, this.Pais);
             Ps.setInt(3, this.TipoDeAutor);
-            int rayito = Ps.executeUpdate();//ejecuto el rayito
+            int rayito = Ps.executeUpdate();
             if (rayito > 0) {
                 JOptionPane.showMessageDialog(null, "cargado");
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "ERROR !!, no pudo ingresar el autor" + "\n" + e);
+        } finally{
+            con.desconectar();
         }
     }
     public void Modificar(int idAutor, String NuevoNombre){
@@ -75,19 +77,23 @@ public class Autor {
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error!!, el registro no pudo ser modificado" + e);
+        } finally{
+            con.desconectar();
         }
     }
     public void Baja(int autorAEliminar){
-        String Borrar = "DELETE FROM autor WHERE idAutor = ?"; //Almaceno el DELETE del worbench en una variable
+        String Borrar = "DELETE FROM autor WHERE idAutor = ?";
         try {
-            Ps = con.conectar().prepareStatement(Borrar); //llamo a mi metodo conectar de la clase Conexion, tambien llamo al metodo prepareStatement, le asigno la variable creada y todo esto lo almaceno en mi objeto Ps
+            Ps = con.conectar().prepareStatement(Borrar);
             Ps.setInt(1, autorAEliminar);
-            int rayo = Ps.executeUpdate(); //ejecuto el rayo y como me devuelve un int lo almaceno en una variable
-            if (rayo > 0) { //hago un if para preguntar si encuentra el dato, si lo encuentra me devuelve un 1 por lo tanto entra y lo elimina
+            int rayo = Ps.executeUpdate();
+            if (rayo > 0) {
                 JOptionPane.showMessageDialog(null, "Dato eliminado");
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error, no pudo borrarlo, error en la sentencia, no tiene permiso para borrar" + "\n" + e);
+        } finally{
+            con.desconectar();
         }
     }    
     public void BuscarPorIdAutor(int AutorEleg){
@@ -103,6 +109,8 @@ public class Autor {
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "ERROR!!, no pudo encontrar el autor" + "\n" + e);
+        } finally{
+            con.desconectar();
         }
     }
     
@@ -126,6 +134,8 @@ public class Autor {
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error en la consulta de Socio" + "\n" + e);
+        } finally{
+            con.desconectar();
         }
         return contenido;
     }
@@ -140,6 +150,8 @@ public class Autor {
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "no puede mostrar los autores" + "\n" + e);
+        } finally{
+            con.desconectar();
         }
         return conten;
     }
